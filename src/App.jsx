@@ -1,13 +1,17 @@
-import './App.css'
+import './App.css';
+import { useRoutes } from "react-router-dom";
+import DetailPage from './pages/DetailPage';
+import HomePage from './pages/HomePage';
+import Not from './pages/NotFoundPage';
 
 function App() {
+  let Router = useRoutes([
+    { path: "/", element: <HomePage /> },
+    { path: "/about", element: <DetailPage /> },
+    { path: "*", element: <Not /> },
+  ]);
 
-  return (
-    <div>
-      <h1 className="text-red-500 font-apple">selina
-      </h1>
-    </div>
-  )
+  return Router;
 }
 
-export default App
+export default App;
