@@ -1,4 +1,4 @@
-import { Col, Row, Select } from "antd";
+import { Col, Dropdown, List, Menu, Row, Select, Typography } from "antd";
 import LogoNav from "../../assets/Img/LogoNav.png";
 import Ava from "../../assets/Img/default_avatar.png";
 import {
@@ -9,10 +9,30 @@ import {
 } from "@ant-design/icons";
 
 const Header = () => {
+  const data = ["Opp!There is no new update ... "];
   const truncateName = (name, maxLength) => {
     if (name.length <= maxLength) return name;
     return name.substring(0, maxLength) + "...";
   };
+  const menu = (
+    <Menu className="w-[300px]">
+      <List
+        footer={
+          <div>
+            {" "}
+            <Menu.Item key="1" className="text-center">show all </Menu.Item>
+          </div>
+        }
+        bordered
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <Typography.Text mark></Typography.Text> {item}
+          </List.Item>
+        )}
+      />
+    </Menu>
+  );
 
   const name = "show ten nguoi dung";
   const maxLength = 10;
@@ -33,7 +53,7 @@ const Header = () => {
         <Col xs={0} sm={0} md={7} lg={7} xl={8}>
           <div>
             <Select
-              className="lg:w-1/2 sm:w-full h-[2.5rem] hidden sm:block "
+              className="lg:w-1/2 sm:w-full h-[2.5rem] hidden sm:block  "
               showSearch
               defaultValue="1"
               optionFilterProp="children"
@@ -73,7 +93,10 @@ const Header = () => {
           <div className="flex gap-4 items-center">
             <GiftOutlined style={{ fontSize: "1.4rem" }} />
             <MessageOutlined style={{ fontSize: "1.4rem" }} />
-            <BellOutlined style={{ fontSize: "1.4rem" }} />
+
+            <Dropdown overlay={menu} placement="bottom" arrow>
+              <BellOutlined style={{ fontSize: "1.4rem" }} />
+            </Dropdown>
           </div>
           <div className="flex gap-3 items-center ">
             <img src={Ava} alt="avatar" className="w-9" />
