@@ -36,7 +36,7 @@
   "require-username": "Name is a required field",
   "require-policy": "Must Accept Term of Service and Privacy Policy",
   "label-password": "Password",
-  "singUp-label-username": "Name",
+  "label-name": "Name",
   "button-singUp": "SIGN UP",
   "button-singIn": "SIGN IN",
   "agree-text": "I agree to the",

@@ -6,12 +6,19 @@ import CardComponent from "../components/CardComponent";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Listing from "./listing";
+import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import "./home.css";
+import SignUp from "../components/Authen/SignUp";
+import SignIn from "../components/Authen/SignIn";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     fetchLocations(searchTerm, inputSearch);

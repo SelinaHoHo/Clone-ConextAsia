@@ -36,7 +36,7 @@
   "require-username": "Tên là trường bắt buộc",
   "require-policy": "Phải chấp nhận Điều khoản Dịch vụ và Chính sách Bảo mật",
   "label-password": "Mật khẩu",
-  "singUp-label-username": "Tên",
+  "label-name": "Tên",
   "button-singUp": "ĐĂNG KÝ",
   "button-singIn": "ĐĂNG NHẬP",
   "agree-text": "Tôi đồng ý với",

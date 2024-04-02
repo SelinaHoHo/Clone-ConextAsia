@@ -1,14 +1,13 @@
-import { GlobalOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
-import { useTranslation } from 'react-i18next';
+import { GlobalOutlined } from "@ant-design/icons";
+import { Select } from "antd";
+import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
   const handleChange = (value) => {
-    console.log(value);
-    if (value.value === 'En') {
-      changeLanguage('en');
-    } else if (value.value === 'Vi') {
-      changeLanguage('vi');
+    if (value.value === "En") {
+      changeLanguage("en");
+    } else if (value.value === "Vi") {
+      changeLanguage("vi");
     }
   };
   const { i18n } = useTranslation();
@@ -19,12 +18,12 @@ const LanguageSwitcher = () => {
   return (
     <div>
       <Select
-        size='large'
-        suffixIcon={<GlobalOutlined style={{ color: 'White' }} />}
+        size="large"
+        suffixIcon={<GlobalOutlined style={{ color: "White" }} />}
         labelInValue
         defaultValue={{
-          value: 'En',
-          label: 'En',
+          value: "En",
+          label: "En",
         }}
         style={{
           width: 65,
@@ -32,12 +31,12 @@ const LanguageSwitcher = () => {
         onChange={handleChange}
         options={[
           {
-            value: 'En',
-            label: 'En',
+            value: "En",
+            label: "En",
           },
           {
-            value: 'Vi',
-            label: 'Vi',
+            value: "Vi",
+            label: "Vi",
           },
         ]}
       />

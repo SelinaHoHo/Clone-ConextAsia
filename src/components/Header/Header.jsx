@@ -123,7 +123,7 @@ const Header = ({ onSearchTermChange }) => {
             <GiftOutlined style={{ fontSize: "1.4rem" }} />
             <MessageOutlined style={{ fontSize: "1.4rem" }} />
 
-            <Dropdown overlay={menu} placement="bottom" arrow>
+            <Dropdown menu={menu} placement="bottom" arrow>
               <BellOutlined style={{ fontSize: "1.4rem" }} />
             </Dropdown>
           </div>
