@@ -33,6 +33,16 @@ const HomePage = () => {
     setSearchTerm(searchTerm);
   };
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div>
       <Header onSearchTermChange={handleSearchTermChange} />
@@ -75,6 +85,7 @@ const HomePage = () => {
           </a>
         </div>
       </div>
+
       {locations &&
         locations[0]?.Workplaces?.map((item) => (
           <>
