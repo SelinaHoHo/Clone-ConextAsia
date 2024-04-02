@@ -7,10 +7,15 @@ import Madeln from "../../assets/Img/Madeln.png";
 import logoFooter from "../../assets/Img/logo_footer.png";
 import faicon from "../../assets/Img/icon/facebook-icon-white.png";
 import inicon from "../../assets/Img/icon/linkedin-icon-white.png";
+import { useTranslation } from "react-i18next";
+import i18n from "../../../i18n";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     // <div >Footer</div>
+    
     <>
       <div className="bg-[#0E1B28]  py-12">
         {" "}
@@ -116,27 +121,27 @@ const Footer = () => {
           <Col xs={0} sm={0} md={0} lg={16} xl={16}>
             <Row className=" uppercase  ">
               <Col span={6}>
-                <p className="text-[0.75rem]  lg:text-[0.75rem] ">Event</p>
+                <p className="text-[0.75rem]  lg:text-[0.75rem] "> {t("Event")}</p>
                 <p className="text-[0.75rem]  lg:text-[0.75rem] mt-7">
-                  Hot needs
+                {t("hot")}
                 </p>
               </Col>
               <Col span={6}>
-                <p className="text-[0.75rem] lg:text-[0.75rem] ">workplaces</p>
+                <p className="text-[0.75rem] lg:text-[0.75rem] ">{t("workplaces")}</p>
                 <p className="text-[0.75rem]  lg:text-[0.75rem] mt-7">
-                  terms and policies
+                  {t("t.a.p")}
                 </p>
               </Col>
               <Col span={6}>
-                <p className="text-[0.75rem]  lg:text-[0.75rem] ">voucher</p>
+                <p className="text-[0.75rem]  lg:text-[0.75rem] ">{t("voucher")}</p>
                 <p className="text-[0.75rem] lg:text-[0.75rem]  mt-7">
-                  about us
+                {t("ab")}
                 </p>
               </Col>
               <Col span={6}>
-                <p className="text-[0.75rem] lg:text-[0.75rem]">faqs</p>
+                <p className="text-[0.75rem] lg:text-[0.75rem]">{t("faq")}</p>
                 <p className="text-[0.75rem]  lg:text-[0.75rem]  mt-7">
-                  contact us
+                {t("con")}
                 </p>
               </Col>
             </Row>

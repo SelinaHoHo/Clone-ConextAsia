@@ -7,8 +7,23 @@ import {
   MenuOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
+import LanguageSwitcher from "../LanguageSwitcher";
+import i18n from "../../../i18n";
+import Sidebar from "../Sidebar/Sidebar";
+import { useState } from "react";
 
 const Header = () => {
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
+
   const data = ["Opp!There is no new update ... "];
   const truncateName = (name, maxLength) => {
     if (name.length <= maxLength) return name;
@@ -20,7 +35,9 @@ const Header = () => {
         footer={
           <div>
             {" "}
-            <Menu.Item key="1" className="text-center">show all </Menu.Item>
+            <Menu.Item key="1" className="text-center">
+              show all{" "}
+            </Menu.Item>
           </div>
         }
         bordered
@@ -91,6 +108,8 @@ const Header = () => {
           className="flex justify-end lg:gap-10 gap-4"
         >
           <div className="flex gap-4 items-center">
+            <LanguageSwitcher />
+
             <GiftOutlined style={{ fontSize: "1.4rem" }} />
             <MessageOutlined style={{ fontSize: "1.4rem" }} />
 
@@ -108,7 +127,8 @@ const Header = () => {
 
         <Col xs={1} sm={1} md={1} lg={0} xl={0}>
           <div>
-            <MenuOutlined className="text-2xl , ml-6" />
+            <MenuOutlined className="text-2xl , ml-6" onClick={toggleSidebar} />
+            <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar}/>
           </div>
         </Col>
       </Row>

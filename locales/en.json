@@ -1,5 +1,12 @@
 {
     "hello": "Hello, world!",
-    "welcome": "Welcome to my app!"
+    "welcome": "Welcome to my app!",
+    "Event": "Event",
+    "hot": "Hot needs",
+    "workplaces": "workplaces",
+    "t.a.p": "terms and policies",
+    "voucher": "vouchers",
+    "ab": "about us",
+    "con": "contact us",
+    "faq": "faqs"
 }
-  
