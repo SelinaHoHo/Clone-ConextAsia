@@ -33,15 +33,9 @@ const HomePage = () => {
     setSearchTerm(searchTerm);
   };
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+ 
 
   return (
     <div>
