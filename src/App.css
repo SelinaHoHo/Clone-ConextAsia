@@ -2,3 +2,37 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+:where(.css-dev-only-do-not-override-11xg00t).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid #d9d9d9;
+  background: #171C32;
+  color: white;
+}
+:where(.css-dev-only-do-not-override-11xg00t).ant-select .ant-select-arrow {
+  color: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 250px; 
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+  z-index: 99999;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
