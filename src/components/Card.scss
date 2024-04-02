@@ -1,0 +1,22 @@
+.btn-shadow::before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 110%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.35) 0,
+    transparent 80%
+  );
+  transition-duration: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.btn-shadow:hover::before {
+  opacity: 1;
+}
