@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import CardComponent from "../components/CardComponent";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import WorkPlace from "../components/WorkPlace";
 import Listing from "./listing";
 
 const HomePage = () => {
@@ -32,10 +33,6 @@ const HomePage = () => {
   const handleSearchTermChange = (searchTerm) => {
     setSearchTerm(searchTerm);
   };
-
-
-
- 
 
   return (
     <div>
@@ -79,6 +76,8 @@ const HomePage = () => {
           </a>
         </div>
       </div>
+
+      <WorkPlace />
 
       {locations &&
         locations[0]?.Workplaces?.map((item) => (
