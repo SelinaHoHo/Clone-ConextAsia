@@ -5,14 +5,17 @@ import WorkplaceModal from "./WorkplaceModal";
 
 const WorkPlace = () => {
   const [locations, setLocations] = useState([]);
-  const [selectedWorkplace, setSelectedWorkplace] = useState(null);
+  const [selectedWorkplace, setSelectedWorkplace] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = (workplace) => {
+    setModalIsOpen(true);
     setSelectedWorkplace(workplace);
   };
 
   const closeModal = () => {
-    setSelectedWorkplace(null);
+    // setSelectedWorkplace(false);
+    setModalIsOpen(false);
   };
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const WorkPlace = () => {
       ))}
 
       <WorkplaceModal
-        isOpen={selectedWorkplace !== null}
+        isOpen={modalIsOpen}
         onRequestClose={closeModal}
         selectedWorkplace={selectedWorkplace}
       />
