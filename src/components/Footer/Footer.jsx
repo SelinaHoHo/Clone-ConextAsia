@@ -8,7 +8,6 @@ import logoFooter from "../../assets/Img/logo_footer.png";
 import faicon from "../../assets/Img/icon/facebook-icon-white.png";
 import inicon from "../../assets/Img/icon/linkedin-icon-white.png";
 import { useTranslation } from "react-i18next";
-import i18n from "../../../i18n";
 
 const Footer = () => {
   const { t } = useTranslation();
