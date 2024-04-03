@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import BookingForm from "../components/BookingForm";
 
@@ -12,6 +13,26 @@ const BookingFormBtn = () => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:3000/Locations");
+  //       const locations = response.data;
+  //       console.log(locations[0].Workplaces[0].price);
+  //       const extractedWorkplaces = locations.flatMap(
+  //         (location) => location.Workplaces
+  //       );
+
+  //       setWorkplaces(extractedWorkplaces);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   return (
     <div>
       <button
