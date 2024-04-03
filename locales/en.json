@@ -1,12 +1,16 @@
 {
-    "hello": "Hello, world!",
-    "welcome": "Welcome to my app!",
-    "Event": "Event",
-    "hot": "Hot needs",
-    "Workplaces": "Workplaces",
-    "t.a.p": "terms and policies",
-    "voucher": "vouchers",
-    "ab": "about us",
-    "con": "contact us",
-    "faq": "faqs"
+  "hello": "Hello, world!",
+  "welcome": "Welcome to my app!",
+  "Event": "Event",
+  "hot": "Hot needs",
+  "workplaces": "workplaces",
+  "t.a.p": "terms and policies",
+  "voucher": "vouchers",
+  "ab": "about us",
+  "con": "contact us",
+  "faq": "faqs",
+  "other-workplace": "Other Work Workplaces",
+  "DP-title": "Overview",
+  "DP-title-2": "Amenities",
+  "DP-title-3": "Location"
 }
