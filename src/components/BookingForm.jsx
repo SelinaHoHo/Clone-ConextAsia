@@ -3,6 +3,7 @@ import "antd/dist/antd";
 import { Col, Input, Row } from "antd/lib/index";
 import moment from "moment";
 import React, { useRef, useState } from "react";
+import { FaRegCalendar, FaUser } from "react-icons/fa";
 
 const BookingForm = () => {
   const [selectedOption, setSelectedOption] = useState("daily");
@@ -346,7 +347,78 @@ const BookingForm = () => {
 
         {/* RightForm */}
         <Col xs={24} sm={24} md={24} lg={12}>
-          b
+          <div className="lg:ml-10">
+            <Col span={24}>
+              <div className=" bg-[#f8f9fa] p-4">
+                <div className="lg:flex">
+                  <div className="lg:w-2/5 overflow-hidden">
+                    <img
+                      src="https://conext-production.s3.ap-southeast-1.amazonaws.com/21673595_46990955_64580699_53795393.png"
+                      alt="img"
+                      className="hover:scale-110 transition-transform duration-500 object-cover"
+                    />
+                  </div>
+                  <div className="lg:w-3/5 ml-4">
+                    <h1 className="color-[#171c32] text-xl font-semibold">
+                      ST Coworking
+                    </h1>
+                    <p className="text-base">30 Bạch Đằng, Hải Châu, Đà Nẵng</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+
+            <Col span={24} className="my-8">
+              <div className=" bg-[#f8f9fa] p-4">
+                {/* Count customer */}
+                <div className="flex items-center my-4">
+                  <FaUser style={{ color: "#c9ac17" }} />
+                  <p className="ml-8">1 customer</p>
+                </div>
+
+                {/* Date */}
+                <div className="flex items-center my-4">
+                  <FaRegCalendar style={{ color: "#c9ac17" }} />
+                  <p className="ml-8">03/04/2024 - 02/05/2024</p>
+                </div>
+
+                <hr />
+
+                <div className="flex items-center justify-between mb-20">
+                  <div>1 seat x 50.000 VND x 30 day</div>
+                  <div>1.500.000 VND</div>
+                </div>
+
+                <hr />
+
+                <div className="flex items-center justify-between mb-4">
+                  <div>Deposit</div>
+                  <div>600.000 VND</div>
+                </div>
+
+                <hr />
+
+                <div className="flex items-center justify-between mb-4 font-bold">
+                  <div>Remaining amount</div>
+                  <div>900.000 VND</div>
+                </div>
+
+                <div className="flex items-center justify-between mb-4 font-bold text-[#fed702]">
+                  <div>Payable now</div>
+                  <div>600.000 VND</div>
+                </div>
+              </div>
+            </Col>
+
+            <Col span={24}>
+              <p className="text-[#6c757d]">
+                The amount to be paid is now a deposit for your reservation and
+                will be refunded if your booking is not successful! The
+                remaining amount will be paid for coworking when receiving your
+                seat.
+              </p>
+            </Col>
+          </div>
         </Col>
       </Row>
     </div>
