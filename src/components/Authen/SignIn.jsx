@@ -1,21 +1,18 @@
-import React from "react";
-import { Form, Input, Modal, Button } from "antd";
 import { GoogleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { Button, Form, Input, Modal } from "antd";
 import { useTranslation } from "react-i18next";
-import { login } from "../../redux/auth/authThunk";
+import { useLogin } from "../../hooks/useAuth";
+
 
 const SignIn = ({ visible, onClose, onSignUp, setVisible }) => {
   const [form] = Form.useForm();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const {mutate: handleLogin} = useLogin();
   const onFinish = (value) => {
-    dispatch(
-      login({
-        email: value.email,
-        password: value.password,
-      })
-    );
+    handleLogin({
+      email: value.email,
+      password: value.password,
+    })
   };
 
   const handleSignUp = () => {
