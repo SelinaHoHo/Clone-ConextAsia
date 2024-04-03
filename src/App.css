@@ -49,3 +49,8 @@ body {
 .ant-card .ant-card-body {
   padding: 20px 32px 20px 0 !important;
 }
+
+.mapDetailPage {
+  height: 50vh;
+  width: 100%;
+}

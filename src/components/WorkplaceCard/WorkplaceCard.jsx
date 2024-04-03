@@ -1,17 +1,18 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import i18n from "../../../i18n";
 import { Card, Col } from "antd";
 
 const WorkplaceCard = (prop) => {
-  const { t } = useTranslation();
-
   return (
-    <Col span={8}>
+    <Col md={8} sm={24}>
       <Card
         className="card-other-workplace"
         bordered={false}
-        cover={<img alt="example" src={prop.img} />}
+        cover={
+          <img
+            className="block h-full w-full transition-transform duration-500 transform hover:scale-95 rounded-md "
+            alt="example"
+            src={prop.img}
+          />
+        }
       >
         <h1 className="lg:text-xl text-[#171c32] font-bold font-apple md:text-base text-md lg:mb-[5px]">
           {prop.title}

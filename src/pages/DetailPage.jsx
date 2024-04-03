@@ -1,14 +1,23 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { Layout, Flex, Divider, Row, Space } from "antd";
+import { Layout, Flex, Divider, Row, Space, Col, Card } from "antd";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import "flowbite";
 import WorkplaceCard from "../components/WorkplaceCard/WorkplaceCard";
-import { CheckCircleOutlined } from "@ant-design/icons";
+import {
+  CheckCircleOutlined,
+  EnvironmentOutlined,
+  ShoppingCartOutlined,
+  CalendarOutlined,
+  PhoneOutlined,
+  LinkOutlined,
+  CaretRightOutlined,
+} from "@ant-design/icons";
 import { Typography } from "antd";
+import MapComponent from "../components/Map/MapDetailPage";
+import "./DetailPage.css";
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Link } = Typography;
 const { Content, Sider } = Layout;
 const DetailPage = () => {
   const { t } = useTranslation();
@@ -33,13 +42,45 @@ const DetailPage = () => {
     },
   ];
 
+  const amentities = [
+    {
+      id: 1,
+      title: "Air Conditioning",
+    },
+    {
+      id: 2,
+      title: "Connect with VCs, mentors",
+    },
+    {
+      id: 3,
+      title: "Swimming Pool",
+    },
+    {
+      id: 4,
+      title: "Video Conferencing Room",
+    },
+    {
+      id: 5,
+      title: "Flipchart",
+    },
+  ];
+
   return (
     <>
       <Header />
+      <div className="py-5 px-24">
+        <a href="/">
+          {t("DP-link1")} <CaretRightOutlined />
+          <a href="/">
+            {t("DP-link2")} <CaretRightOutlined />{" "}
+            <a href="/about">ST Coworking</a>
+          </a>
+        </a>
+      </div>
       {/* Slide */}
       <div
         id="default-carousel"
-        className="relative w-full px-[5px] py-6"
+        className="relative w-full px-[5px] pb-6"
         data-carousel="slide"
       >
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -137,8 +178,8 @@ const DetailPage = () => {
           </span>
         </button>
       </div>
-      <div className="px-32 py-4">
-        <Flex width="80%">
+      <div className="lg:w-[80%] w-[95%] mx-auto pt-4 pb-16">
+        <Flex width="80%" gap={"7%"} lg="column" md="vertical">
           <Content width="75%">
             <Space size="middle" direction="vertical">
               <Title>ST Coworking</Title>
@@ -151,23 +192,215 @@ const DetailPage = () => {
               </div>
               <div>
                 <Title level={4}>{t("DP-title-2")}</Title>
-                <Paragraph prefix="[<CheckCircleOutlined />]">selina</Paragraph>
-                <CheckCircleOutlined />
+                <Row>
+                  {amentities.map((items) => (
+                    <Col
+                      style={{
+                        marginLeft: "0 !important",
+                        margin: "0 !important",
+                      }}
+                      key={items.id}
+                      xs={{ span: 5, offset: 1 }}
+                      lg={{ span: 6, offset: 2 }}
+                    >
+                      <Flex style={{ alignItems: "left" }}>
+                        <CheckCircleOutlined />
+                        <Paragraph
+                          style={{
+                            marginLeft: "10px",
+                            marginBottom: "0",
+                            color: "#171C32",
+                            fontSize: "15px",
+                          }}
+                        >
+                          {items.title}
+                        </Paragraph>
+                      </Flex>
+                    </Col>
+                  ))}
+                </Row>
               </div>
               <div>
                 <Title level={4}>{t("DP-title-3")}</Title>
-                <Paragraph>30 Bạch Đằng, Hải Châu, Đà Nẵng</Paragraph>
+                <Flex style={{ alignItems: "left" }}>
+                  <EnvironmentOutlined />
+                  <Paragraph
+                    style={{
+                      marginLeft: "10px",
+                      marginBottom: "0",
+                      color: "#171C32",
+                      fontSize: "15px",
+                    }}
+                  >
+                    30 Bạch Đằng, Hải Châu, Đà Nẵng
+                  </Paragraph>
+                </Flex>
               </div>
+              <MapComponent />
             </Space>
           </Content>
-          <Sider width="25%">Sider</Sider>
+          <Sider width="30%">
+            <button className="btn-shadow relative w-full text-xl font-apple font-semibold text-black pr-2 px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group">
+              {t("DP-button-booking")} <ShoppingCartOutlined />
+            </button>
+            <Space direction="vertical" size="large">
+              <Card bordered={false}>
+                <Space direction="vertical">
+                  <Title
+                    level={3}
+                    style={{
+                      color: "#171C32",
+                      textAlign: "center",
+                      width: "100%",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {t("DP-price")}
+                  </Title>
+                  <Flex
+                    style={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Flex
+                      gap="middle"
+                      vertical
+                      style={{
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <p className="text-[#171C32] font-apple text-xl">
+                        {t("DP-day")}
+                      </p>
+                      <span className="text-[#171C32] font-apple text-3xl font-semibold">
+                        50.000
+                        <span className="text-[#171C32] font-apple text-[10px]">
+                          VND
+                        </span>
+                      </span>
+                    </Flex>
+                    <Divider
+                      type="vertical"
+                      style={{ height: "40px", color: "black" }}
+                    />
+                    <Flex
+                      gap="middle"
+                      vertical
+                      style={{
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <p className="text-[#171C32] font-apple text-xl">
+                        {" "}
+                        {t("DP-month")}
+                      </p>
+                      <span className="text-[#171C32] font-apple text-3xl font-semibold">
+                        1,500.000
+                        <span className="text-[#171C32] font-apple text-[10px]">
+                          VND
+                        </span>
+                      </span>
+                    </Flex>
+                  </Flex>
+                </Space>
+              </Card>
+              <Card width="100%" bordered={false}>
+                <Space direction="vertical">
+                  <Title
+                    style={{
+                      color: "#171C32",
+                      textAlign: "center",
+                      width: "100%",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    100
+                  </Title>
+                  <p className="text-[##0b0014] font-apple text-[15px] text-center">
+                    CoNEXTers meetup at ST Coworking
+                  </p>
+                </Space>
+              </Card>
+              <Card bordered={false}>
+                <Space direction="vertical">
+                  <Title level={4}>{t("DP-contact")}</Title>
+                  <Flex style={{ alignItems: "left" }}>
+                    <EnvironmentOutlined />
+                    <Paragraph
+                      style={{
+                        marginLeft: "10px",
+                        marginBottom: "0",
+                        color: "#171C32",
+                        fontSize: "15px",
+                      }}
+                    >
+                      30 Bạch Đằng, Hải Châu, Đà Nẵng
+                    </Paragraph>
+                  </Flex>
+                  <Flex style={{ alignItems: "left" }}>
+                    <PhoneOutlined />
+                    <Paragraph
+                      style={{
+                        marginLeft: "10px",
+                        marginBottom: "0",
+                        color: "#171C32",
+                        fontSize: "15px",
+                      }}
+                    >
+                      +840347897633
+                    </Paragraph>
+                  </Flex>
+                  <Flex style={{ alignItems: "left" }}>
+                    <CalendarOutlined />
+                    <Paragraph
+                      style={{
+                        marginLeft: "10px",
+                        marginBottom: "0",
+                        color: "#171C32",
+                        fontSize: "15px",
+                      }}
+                    >
+                      Joined 15th Dec 2023
+                    </Paragraph>
+                  </Flex>
+                  <Flex style={{ alignItems: "left" }}>
+                    <LinkOutlined />
+                    <Link
+                      style={{
+                        marginLeft: "10px",
+                        marginBottom: "0",
+                        fontSize: "15px",
+                      }}
+                    >
+                      https://stunited.vn/
+                    </Link>
+                  </Flex>
+                  <Divider />
+                  <p className="text-[##0b0014] font-apple text-[15px] mb-2 ">
+                    {t("DP-opening")}
+                  </p>
+                  <p className="text-[##0b0014] font-apple text-[15px] ">
+                    {t("DP-opening2")}
+                  </p>
+                  <p className="text-[##0b0014] font-apple text-[15px] ">
+                    {t("DP-opening3")}
+                  </p>
+                </Space>
+              </Card>
+            </Space>
+          </Sider>
         </Flex>
         <Divider />
         <div>
           <h1 className="lg:text-3xl text-[#171c32] font-semibold font-apple md:text-2xl text-xl mb-[12px] md:mb-[16px] lg:mb-[20px]">
             {t("other-workplace")}
           </h1>
-          <Row gutter={16}>
+          <Row gutter={32} lg={3} md={1}>
             {otherWorkplace.map((items) => (
               <WorkplaceCard
                 title={items.title}
