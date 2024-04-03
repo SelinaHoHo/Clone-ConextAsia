@@ -2,7 +2,7 @@ import { DatePicker, Select } from "antd";
 import "antd/dist/antd";
 import { Col, Input, Row } from "antd/lib/index";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const BookingForm = () => {
   const [selectedOption, setSelectedOption] = useState("daily");
@@ -19,9 +19,16 @@ const BookingForm = () => {
     setMonthCount(parseInt(e.target.value));
   };
 
+  const divRef = useRef(null);
+
+  const handleInput = (e) => {
+    divRef.current.textContent = e.target.textContent;
+  };
+
   return (
     <div className="overflow-auto">
       <Row className="px-2 py-4">
+        {/* LeftForm */}
         <Col xs={24} sm={24} md={24} lg={12}>
           {/* header */}
           <h1 className="font-bold text-2xl mb-4">
@@ -313,7 +320,31 @@ const BookingForm = () => {
               </Col>
             </form>
           )}
+
+          {/* Message */}
+          <Col span={24}>
+            <div className="lg:mr-10">
+              <div className="pb-2">
+                <span className="font-bold">
+                  Message of additional requirements
+                </span>
+              </div>
+              <div
+                ref={divRef}
+                contentEditable="true"
+                className="w-full h-32 border border-gray-300 overflow-y-auto p-4 rounded-md"
+                onInput={handleInput}
+              ></div>
+            </div>
+          </Col>
+
+          {/* BTN */}
+          <button className="p-4 bg-[#fed702] font-semibold uppercase color-[#171c32] rounded  transform hover:-translate-y-1 transition duration-300 hover:shadow-bottom my-8">
+            continue
+          </button>
         </Col>
+
+        {/* RightForm */}
         <Col xs={24} sm={24} md={24} lg={12}>
           b
         </Col>
