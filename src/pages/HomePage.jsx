@@ -7,6 +7,7 @@ import BookingForm from "../components/BookingForm";
 import CardComponent from "../components/CardComponent";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import WorkPlace from "../components/WorkPlace";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -98,6 +99,7 @@ const HomePage = () => {
           <BookingForm />
           <button onClick={closeModal}>Close</button>
         </Modal>
+        <WorkPlace />
       </div>
 
       {locations &&
