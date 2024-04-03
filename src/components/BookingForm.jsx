@@ -149,6 +149,10 @@ const BookingForm = ({ selectedWorkplace }) => {
 
   const dateRange = endDate.diff(startDate, "days") + 1;
 
+  function formatVND(amount) {
+    return amount.toLocaleString("vi-VN");
+  }
+
   return (
     <div className="overflow-auto">
       <Row className="px-2 py-4">
