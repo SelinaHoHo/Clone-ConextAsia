@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
-
 import { Col, Row } from "antd";
 import "./Card.scss";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import SignUp from "./Authen/SignUp";
+import SignIn from "./Authen/SignIn";
 
 const CardComponent = ({ data }) => {
+  const [signInVisible, setSignInVisible] = useState(false);
+  const [signUpVisible, setSignUpVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+
   return (
     <Row className="mb-5 mt-5 flex">
       <Col
@@ -32,9 +38,30 @@ const CardComponent = ({ data }) => {
             <p className="mb-[15px] text-base">{data.price} vnd/day</p>
           </div>
           <div className="flex justify-between items-center">
-            <button className="relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group">
+            <button
+              onClick={() => {
+                setVisible(true);
+                setSignInVisible(true);
+              }}
+              className="relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group"
+            >
               BOOK A SEAT
             </button>
+            {visible ? (
+              <SignIn
+                visible={signInVisible}
+                onClose={() => setSignInVisible(false)}
+                onSignUp={() => setSignUpVisible(true)}
+                setVisible={setVisible}
+              />
+            ) : (
+              <SignUp
+                visible={signUpVisible}
+                onClose={() => setSignUpVisible(false)}
+                onSignIn={() => setSignInVisible(true)}
+                setVisible={setVisible}
+              />
+            )}
             <a
               className="text-[#1890ff] hover:text-[#b6deff]"
               onClick={() => navigate(`/detail/${data.name}`)}
