@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import i18n from "../../i18n";
 
-import BookingFormBtn from "../components/BookingFormBtn";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import WorkPlace from "../components/WorkPlace";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ const HomePage = () => {
         <p>{t("welcome")}</p>
       </div>
 
-      <BookingFormBtn />
+      <WorkPlace />
     </div>
   );
 };
