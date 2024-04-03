@@ -1,13 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
-import { Swiper, SwiperSlide } from "swiper/react";
-// import Swiper and modules styles
-import "swiper/css"; // core Swiper
-import "swiper/css/navigation"; // Navigation module
-import "swiper/css/pagination"; // Pagination module
-import "swiper/css/autoplay"; // Autoplay module
-import "swiper/css/effect-fade"; // Fade effect
 import { Layout, Flex, Divider, Row, Space } from "antd";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
