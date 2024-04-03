@@ -14,6 +14,79 @@ const BookingForm = ({ selectedWorkplace }) => {
 
   const [selectedDateOut, setSelectedDateOut] = useState(null);
 
+  // valdateInput
+  const [fullName, setFullName] = useState("");
+  const [fullNameError, setFullNameError] = useState(true);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(true);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState(true);
+
+  const validateFullName = (value) => {
+    if (!value.trim()) {
+      setFullNameError("Full name is required");
+    } else {
+      setFullNameError("");
+    }
+  };
+
+  const validateEmail = (value) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!value.trim()) {
+      setEmailError("Email is required");
+    } else if (!emailRegex.test(value)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const validatePhoneNumber = (value) => {
+    const phoneRegex = /^\d{10}$/;
+
+    if (!value.trim()) {
+      setPhoneNumberError("Phone number is required");
+    } else if (!phoneRegex.test(value)) {
+      setPhoneNumberError("Please enter a valid 10-digit phone number");
+    } else {
+      setPhoneNumberError("");
+    }
+  };
+
+  const handleFullNameChange = (e) => {
+    const value = e.target.value;
+    setFullName(value);
+    validateFullName(value);
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    validateEmail(value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    const value = e.target.value;
+    setPhoneNumber(value);
+    validatePhoneNumber(value);
+    console.log(value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    validateFullName(fullName);
+
+    validateEmail(email);
+
+    validatePhoneNumber(phoneNumber);
+
+    if (!phoneNumberError && !fullNameError && !emailError) {
+      alert("success!");
+    }
+  };
+
   const handleDateChange = (date, dateString) => {
     setSelectedDate(dateString);
   };
@@ -29,7 +102,8 @@ const BookingForm = ({ selectedWorkplace }) => {
   const [monthCount, setMonthCount] = useState(1);
 
   const handleMonthChange = (e) => {
-    setMonthCount(parseInt(e.target.value));
+    const newMonthCount = parseInt(e.target.value, 10); // Parse value to integer
+    setMonthCount(newMonthCount);
   };
 
   const divRef = useRef(null);
@@ -45,12 +119,16 @@ const BookingForm = ({ selectedWorkplace }) => {
 
   const dateRange = endDate.diff(startDate, "days") + 1;
 
+  function formatVND(amount) {
+    return amount.toLocaleString("vi-VN");
+  }
+
   return (
     <div className="overflow-auto">
       <Row className="px-2 py-4">
         {/* LeftForm */}
         <Col xs={24} sm={24} md={24} lg={12}>
-          <form>
+          <form onSubmit={handleSubmit}>
             {/* header */}
             <h1 className="font-bold text-2xl mb-4">
               Complete your Day Pass Booking
@@ -62,22 +140,46 @@ const BookingForm = ({ selectedWorkplace }) => {
                 <Col xs={24} sm={24} md={12} lg={12} className="mb-4">
                   <div className="lg:mr-10">
                     <div className="pb-2">
-                      <span className="font-bold">
-                        Full Name <span style={{ color: "red" }}>*</span>
-                      </span>
+                      <label htmlFor="fullName">
+                        <span className="font-bold">
+                          Full Name <span style={{ color: "red" }}>*</span>
+                        </span>
+                      </label>
                     </div>
-                    <Input placeholder="Name" className="h-[50px] p-2" />
+                    <Input
+                      type="text"
+                      id="fullName"
+                      placeholder="Name"
+                      className="h-[50px] p-2"
+                      value={fullName}
+                      onChange={handleFullNameChange}
+                    />
+                    {fullNameError && (
+                      <div style={{ color: "red" }}>{fullNameError}</div>
+                    )}
                   </div>
                 </Col>
 
                 <Col xs={24} sm={24} md={12} lg={12} className="mb-4">
                   <div className="lg:mr-10">
                     <div className="pb-2">
-                      <span className="font-bold">
-                        Email <span style={{ color: "red" }}>*</span>
-                      </span>
+                      <label htmlFor="email">
+                        <span className="font-bold">
+                          Email <span style={{ color: "red" }}>*</span>
+                        </span>
+                      </label>
                     </div>
-                    <Input placeholder="Email" className="h-[50px] p-2" />
+                    <Input
+                      placeholder="Email"
+                      className="h-[50px] p-2"
+                      type="email"
+                      id="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                    {emailError && (
+                      <div style={{ color: "red" }}>{emailError}</div>
+                    )}
                   </div>
                 </Col>
 
@@ -92,14 +194,25 @@ const BookingForm = ({ selectedWorkplace }) => {
                     />
                   </div>
                 </Col>
+
                 <Col xs={24} sm={24} md={12} lg={12} className="mb-4">
                   <div className="lg:mr-10">
                     <div className="pb-2">
-                      <span className="font-bold">
+                      <label htmlFor="phoneNumber">
                         Phone Number <span style={{ color: "red" }}>*</span>
-                      </span>
+                      </label>
                     </div>
-                    <Input placeholder="Phone" className="h-[50px] p-2" />
+                    <Input
+                      placeholder="Phone"
+                      className="h-[50px] p-2"
+                      type="text"
+                      id="phoneNumber"
+                      value={phoneNumber}
+                      onChange={handlePhoneNumberChange}
+                    />
+                    {phoneNumberError && (
+                      <div style={{ color: "red" }}>{phoneNumberError}</div>
+                    )}
                   </div>
                 </Col>
               </Row>
@@ -284,6 +397,7 @@ const BookingForm = ({ selectedWorkplace }) => {
                         </div>
                         <DatePicker
                           className="h-[50px] p-2 w-full"
+                          onChange={handleDateChange}
                           defaultValue={moment()}
                           format="MM/DD/YYYY"
                         />
@@ -370,7 +484,10 @@ const BookingForm = ({ selectedWorkplace }) => {
             </Col>
 
             {/* BTN */}
-            <button className="p-4 bg-[#fed702] font-semibold uppercase color-[#171c32] rounded  transform hover:-translate-y-1 transition duration-300 hover:shadow-bottom my-8 ">
+            <button
+              className="p-4 bg-[#fed702] font-semibold uppercase color-[#171c32] rounded  transform hover:-translate-y-1 transition duration-300 hover:shadow-bottom my-8 "
+              type="submit"
+            >
               continue
             </button>
           </form>
@@ -382,10 +499,10 @@ const BookingForm = ({ selectedWorkplace }) => {
             <Col span={24}>
               <div className=" bg-[#f8f9fa] p-4">
                 <div className="lg:flex">
-                  <div className="lg:w-2/5 overflow-hidden">
+                  <div className="lg:w-2/5 overflow-hidden flex items-center justify-center">
                     <img
                       src={selectedWorkplace.url}
-                      className="hover:scale-110 transition-transform duration-500 object-cover"
+                      className="hover:scale-110 transition-transform duration-500 object-cover lg:h-[100px] w-full"
                     />
                   </div>
                   <div className="lg:w-3/5 ml-4">
@@ -410,13 +527,29 @@ const BookingForm = ({ selectedWorkplace }) => {
                 <div className="flex items-center my-4">
                   <FaRegCalendar style={{ color: "#c9ac17" }} />
                   <p className="ml-8">
-                    {selectedDate
-                      ? selectedDate
-                      : moment().format("DD/MM/YYYY")}{" "}
+                    {selectedOption === "daily" &&
+                      (selectedDate
+                        ? moment(selectedDate).format("DD/MM/YYYY")
+                        : moment().format("DD/MM/YYYY"))}{" "}
+                    {selectedOption === "monthly" &&
+                      (selectedDate
+                        ? moment(selectedDate).format("DD/MM/YYYY")
+                        : moment().format("DD/MM/YYYY"))}{" "}
                     -{" "}
-                    {selectedDateOut
-                      ? selectedDateOut
-                      : moment().add(1, "days").format("DD/MM/YYYY")}
+                    {selectedOption === "daily" &&
+                      (selectedDateOut
+                        ? moment(selectedDateOut)
+                            .add(1, "days")
+                            .format("DD/MM/YYYY")
+                        : moment().add(1, "days").format("DD/MM/YYYY"))}
+                    {selectedOption === "monthly" &&
+                      (selectedDate
+                        ? moment(selectedDate)
+                            .add(monthCount, "months")
+                            .format("DD/MM/YYYY")
+                        : moment()
+                            .add(monthCount, "months")
+                            .format("DD/MM/YYYY"))}
                   </p>
                 </div>
 
@@ -424,13 +557,26 @@ const BookingForm = ({ selectedWorkplace }) => {
 
                 <div className="flex items-center justify-between mb-20">
                   <div>
-                    {customerCount} seat x {selectedWorkplace.price} VND x {""}
-                    {dateRange} days
+                    {customerCount} seat x {formatVND(selectedWorkplace.price)}{" "}
+                    VND x {""}
+                    {selectedOption === "daily" &&
+                      dateRange + " " + "days"}{" "}
+                    {selectedOption === "monthly" &&
+                      monthCount + " " + "months"}
                   </div>
                   <div>
-                    {parseInt(customerCount) *
-                      parseInt(selectedWorkplace.price) *
-                      parseInt(dateRange)}{" "}
+                    {selectedOption === "daily" &&
+                      formatVND(
+                        parseInt(customerCount) *
+                          parseInt(selectedWorkplace.price) *
+                          parseInt(dateRange)
+                      )}{" "}
+                    {selectedOption === "monthly" &&
+                      formatVND(
+                        parseInt(customerCount) *
+                          parseInt(selectedWorkplace.price) *
+                          parseInt(monthCount * 30)
+                      )}
                     VND
                   </div>
                 </div>
@@ -447,10 +593,12 @@ const BookingForm = ({ selectedWorkplace }) => {
                 <div className="flex items-center justify-between mb-4 font-bold">
                   <div>Remaining amount</div>
                   <div>
-                    {" "}
-                    {parseInt(customerCount) *
-                      parseInt(selectedWorkplace.price) *
-                      parseInt(dateRange)}{" "}
+                    {selectedOption === "daily" &&
+                      formatVND(
+                        parseInt(customerCount) *
+                          parseInt(selectedWorkplace.price) *
+                          parseInt(dateRange)
+                      )}{" "}
                     VND
                   </div>
                 </div>
