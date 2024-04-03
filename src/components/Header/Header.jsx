@@ -8,7 +8,6 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import LanguageSwitcher from "../LanguageSwitcher";
-import i18n from "../../../i18n";
 import Sidebar from "../Sidebar/Sidebar";
 import { useState } from "react";
 
@@ -75,7 +74,7 @@ const Header = () => {
               defaultValue="1"
               optionFilterProp="children"
               filterOption={(input, option) =>
-                (option?.label ?? "").includes(input)
+                (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
               }
               filterSort={(optionA, optionB) =>
                 (optionA?.label ?? "")
