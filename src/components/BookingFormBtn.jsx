@@ -26,20 +26,19 @@ const BookingFormBtn = () => {
         contentLabel="Booking Form Modal"
         style={{
           content: {
-            width: "80%",
+            width: "70%",
             maxWidth: "80%",
             margin: "auto",
             top: "50%",
             left: "50%",
             right: "80%",
             bottom: "-40%",
-            marginRight: "-50%",
             transform: "translate(-50%, -50%)",
           },
         }}
       >
-        <BookingForm />
         <button onClick={closeModal}>Close</button>
+        <BookingForm />
       </Modal>
     </div>
   );
