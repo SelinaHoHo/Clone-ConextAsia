@@ -4,12 +4,12 @@ import { notification } from "antd";
 
 export const useLogin = () => {
   return useMutation({
-    mutationFn: (req) => {
-      const { data } = postLogin(req);
+    mutationFn: async (req) => {
+      const { data } = await postLogin(req);
       return data;
     },
     onSuccess: (data) => {
-    console.log(data)
+      console.log(data);
       notification.success({
         message: "Login Successful",
         description: "You have successfully logged in.",
