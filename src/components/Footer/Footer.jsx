@@ -8,7 +8,6 @@ import logoFooter from "../../assets/Img/logo_footer.png";
 import faicon from "../../assets/Img/icon/facebook-icon-white.png";
 import inicon from "../../assets/Img/icon/linkedin-icon-white.png";
 import { useTranslation } from "react-i18next";
-import i18n from "../../../i18n";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -19,42 +18,6 @@ const Footer = () => {
     <>
       <div className="bg-[#0E1B28]  py-12">
         {" "}
-        {/* <Row className="text-white items-center md:mx-20 ">
-          <Col xs={8} sm={8} md={8} lg={4} xl={4} className="mx-auto">
-            <div className="w-50% p-3">
-              <img
-                src={heppi}
-                className="lg:w-[50%] sm:w-[80%] xs:w-[70%] "
-              ></img>
-            </div>
-          </Col>
-          <Col xs={8} sm={8} md={8} lg={4} xl={4} className="mx-auto">
-            <div className="w-50% p-3">
-              <img src={st} className="lg:w-[25%] sm:w-[40%] xs:w-[30%] "></img>
-            </div>
-          </Col>
-          <Col xs={8} sm={8} md={8} lg={4} xl={4} className="mx-auto">
-            <div className="w-50% p-3">
-              <img
-                src={ciao}
-                className="lg:w-[50%] sm:w-[80%] xs:w-[70%] "
-              ></img>
-            </div>
-          </Col>
-          <Col xs={8} sm={8} md={8} lg={4} xl={4}>
-            <div className="w-50% p-3">
-              <img
-                src={iot}
-                className="lg:w-[35%] sm:w-[40%]  xs:w-[30%]"
-              ></img>
-            </div>
-          </Col>
-          <Col xs={8} sm={8} md={8} lg={4} xl={4}>
-            <div className="w-50% p-3">
-              <img src={Madeln} className="lg:w-[100%]"></img>
-            </div>
-          </Col>
-        </Row> */}
         <Row className="text-white items-center md:mx-20 sm:mx-12 xs:mx-10">
           <Col xs={8} sm={8} md={8} lg={4} xl={4} className="mx-auto">
             <div className="w-50% p-3">
