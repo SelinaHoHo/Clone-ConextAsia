@@ -142,6 +142,13 @@ const BookingForm = ({ selectedWorkplace }) => {
     divRef.current.textContent = e.target.textContent;
   };
 
+  const startDate = selectedDate ? moment(selectedDate) : moment();
+  const endDate = selectedDateOut
+    ? moment(selectedDateOut)
+    : moment().add(1, "days");
+
+  const dateRange = endDate.diff(startDate, "days") + 1;
+
   return (
     <div className="overflow-auto">
       <Row className="px-2 py-4">
