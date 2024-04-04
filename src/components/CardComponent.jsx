@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Col, Row } from "antd";
 import "./Card.scss";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import SignUp from "./Authen/SignUp";
 import SignIn from "./Authen/SignIn";
 import BookingFormBtn from "./BookingFormBtn";
@@ -13,9 +12,7 @@ const CardComponent = ({ data }) => {
   const [signInVisible, setSignInVisible] = useState(false);
   const [signUpVisible, setSignUpVisible] = useState(false);
   const [visible, setVisible] = useState(false);
-  // const [isLogin] = localStorage.getItem("isLogin");
   const { isLogin } = useSelector((state) => state.auth);
-  console.log(isLogin);
   const navigate = useNavigate();
   const [selectedWorkplace, setSelectedWorkplace] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,7 +23,7 @@ const CardComponent = ({ data }) => {
   };
 
   const closeModal = () => {
-    // setSelectedWorkplace(false);
+
     setModalIsOpen(false);
   };
 

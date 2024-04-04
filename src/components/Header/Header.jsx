@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/authSlice";
 import { LogoutOutlined } from "@ant-design/icons";
 
+
 const Header = ({ onSearchTermChange }) => {
   const dispatch = useDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

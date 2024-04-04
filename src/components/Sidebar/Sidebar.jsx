@@ -10,16 +10,16 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      // Kiểm tra xem có click ngoài sidebar không
+   
       if (!event.target.closest(".sidebar") && isOpen) {
-        onClose(); // Đóng sidebar
+        onClose(); 
       }
     };
 
-    // Thêm sự kiện click ngoài sidebar
+
     document.addEventListener("click", handleOutsideClick);
 
-    // Cleanup: xóa sự kiện khi component unmount
+   
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };

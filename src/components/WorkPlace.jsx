@@ -42,7 +42,6 @@ const WorkPlace = () => {
                 <p>Price: {workplace.price}</p>
                 <BookingFormBtn onClick={openModal} workplace={workplace} />
                 View Details
-                {/* Add more fields as needed */}
               </div>
             ))}
           </div>

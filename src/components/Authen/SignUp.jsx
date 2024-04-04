@@ -18,8 +18,8 @@ const SignUp = ({ visible, onClose, onSignIn, setVisible }) => {
     onClose();
   };
   const handleSignIn = () => {
-    onClose(); // Close sign-up modal
-    onSignIn(); // Open sign-in modal
+    onClose(); 
+    onSignIn(); 
     setVisible(true);
   };
 
