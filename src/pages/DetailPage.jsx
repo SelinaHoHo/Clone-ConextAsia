@@ -16,11 +16,20 @@ import {
 import { Typography } from "antd";
 import MapComponent from "../components/Map/MapDetailPage";
 import "./DetailPage.css";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetails } from "../redux/auth/authThunk";
 
 const { Title, Paragraph, Link } = Typography;
 const { Content, Sider } = Layout;
 const DetailPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { name } = useParams();
   const { t } = useTranslation();
+  const data = useSelector((state) => state.auth.details);
   const otherWorkplace = [
     {
       id: 1,
@@ -65,6 +74,10 @@ const DetailPage = () => {
     },
   ];
 
+  useEffect(() => {
+    dispatch(getDetails({ name: name }));
+  }, [name, dispatch]);
+
   return (
     <>
       <Header />
@@ -73,7 +86,7 @@ const DetailPage = () => {
           {t("DP-link1")} <CaretRightOutlined />
           <a href="/">
             {t("DP-link2")} <CaretRightOutlined />{" "}
-            <a href="/about">ST Coworking</a>
+            <a onClick={() => navigate(`/detail/${data.name}`)}>{data.name}</a>
           </a>
         </a>
       </div>
@@ -86,7 +99,7 @@ const DetailPage = () => {
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
             <img
-              src="https://conext-production.s3.ap-southeast-1.amazonaws.com/detail/53735578_92988630_73274457_19241380.png"
+              src={data?.url}
               className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="Image 1"
             ></img>
@@ -178,157 +191,52 @@ const DetailPage = () => {
           </span>
         </button>
       </div>
-      <div className="lg:w-[80%] w-[95%] mx-auto pt-4 pb-16">
-        <Flex width="80%" gap={"7%"} lg="column" md="vertical">
-          <Content width="75%">
-            <Space size="middle" direction="vertical">
-              <Title>ST Coworking</Title>
-              <div>
-                <Title level={4}>{t("DP-title")}</Title>
-                <Paragraph>
-                  It could be said that ST Coworking is the first coworking
-                  space where dedicated to start-up youth start
-                </Paragraph>
-              </div>
-              <div>
-                <Title level={4}>{t("DP-title-2")}</Title>
-                <Row>
-                  {amentities.map((items) => (
-                    <Col
-                      style={{
-                        marginLeft: "0 !important",
-                        margin: "0 !important",
-                      }}
-                      key={items.id}
-                      xs={{ span: 5, offset: 1 }}
-                      lg={{ span: 6, offset: 2 }}
-                    >
-                      <Flex style={{ alignItems: "left" }}>
-                        <CheckCircleOutlined />
-                        <Paragraph
-                          style={{
-                            marginLeft: "10px",
-                            marginBottom: "0",
-                            color: "#171C32",
-                            fontSize: "15px",
-                          }}
-                        >
-                          {items.title}
-                        </Paragraph>
-                      </Flex>
-                    </Col>
-                  ))}
-                </Row>
-              </div>
-              <div>
-                <Title level={4}>{t("DP-title-3")}</Title>
-                <Flex style={{ alignItems: "left" }}>
-                  <EnvironmentOutlined />
-                  <Paragraph
-                    style={{
-                      marginLeft: "10px",
-                      marginBottom: "0",
-                      color: "#171C32",
-                      fontSize: "15px",
-                    }}
-                  >
-                    30 Bạch Đằng, Hải Châu, Đà Nẵng
-                  </Paragraph>
-                </Flex>
-              </div>
-              <MapComponent />
-            </Space>
-          </Content>
-          <Sider width="30%">
-            <button className="btn-shadow relative w-full text-xl font-apple font-semibold text-black pr-2 px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group">
-              {t("DP-button-booking")} <ShoppingCartOutlined />
-            </button>
-            <Space direction="vertical" size="large">
-              <Card bordered={false}>
-                <Space direction="vertical">
-                  <Title
-                    level={3}
-                    style={{
-                      color: "#171C32",
-                      textAlign: "center",
-                      width: "100%",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {t("DP-price")}
-                  </Title>
-                  <Flex
-                    style={{
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Flex
-                      gap="middle"
-                      vertical
-                      style={{
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        width: "100%",
-                      }}
-                    >
-                      <p className="text-[#171C32] font-apple text-xl">
-                        {t("DP-day")}
-                      </p>
-                      <span className="text-[#171C32] font-apple text-3xl font-semibold">
-                        50.000
-                        <span className="text-[#171C32] font-apple text-[10px]">
-                          VND
-                        </span>
-                      </span>
-                    </Flex>
-                    <Divider
-                      type="vertical"
-                      style={{ height: "40px", color: "black" }}
-                    />
-                    <Flex
-                      gap="middle"
-                      vertical
-                      style={{
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        width: "100%",
-                      }}
-                    >
-                      <p className="text-[#171C32] font-apple text-xl">
-                        {" "}
-                        {t("DP-month")}
-                      </p>
-                      <span className="text-[#171C32] font-apple text-3xl font-semibold">
-                        1,500.000
-                        <span className="text-[#171C32] font-apple text-[10px]">
-                          VND
-                        </span>
-                      </span>
-                    </Flex>
-                  </Flex>
-                </Space>
-              </Card>
-              <Card width="100%" bordered={false}>
-                <Space direction="vertical">
-                  <Title
-                    style={{
-                      color: "#171C32",
-                      textAlign: "center",
-                      width: "100%",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    100
-                  </Title>
-                  <p className="text-[##0b0014] font-apple text-[15px] text-center">
-                    CoNEXTers meetup at ST Coworking
-                  </p>
-                </Space>
-              </Card>
-              <Card bordered={false}>
-                <Space direction="vertical">
-                  <Title level={4}>{t("DP-contact")}</Title>
+      <div className="lg:w-[75%] w-[95%] mx-auto pt-4 pb-12">
+        <Flex
+          width="80%"
+          gap={"5%"}
+          lg="column"
+          md="vertical"
+          className="flex flex-col-reverse sm:flex-row"
+        >
+          <div className="md:w-[65%] w-[100%] mx-auto mb-5 md:mb-0">
+            <Content width="100%">
+              <Space size="middle" direction="vertical">
+                <Title>{data.name}</Title>
+                <div>
+                  <Title level={4}>{t("DP-title")}</Title>
+                  <Paragraph>{data.overview}</Paragraph>
+                </div>
+                <div>
+                  <Title level={4}>{t("DP-title-2")}</Title>
+                  <Row>
+                    {amentities.map((items) => (
+                      <Col
+                        key={items.id}
+                        xs={{ span: 12, offset: 2, gutter: 5 }}
+                        sm={{ span: 9, offset: 2, gutter: 5 }}
+                        md={{ span: 8, offset: 2, gutter: 5 }}
+                        lg={{ span: 7, offset: 2, gutter: 2 }}
+                      >
+                        <Flex style={{ alignItems: "left" }}>
+                          <CheckCircleOutlined />
+                          <Paragraph
+                            style={{
+                              marginLeft: "10px",
+                              marginBottom: "0",
+                              color: "#171C32",
+                              fontSize: "15px",
+                            }}
+                          >
+                            {items.title}
+                          </Paragraph>
+                        </Flex>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+                <div>
+                  <Title level={4}>{t("DP-title-3")}</Title>
                   <Flex style={{ alignItems: "left" }}>
                     <EnvironmentOutlined />
                     <Paragraph
@@ -339,61 +247,175 @@ const DetailPage = () => {
                         fontSize: "15px",
                       }}
                     >
-                      30 Bạch Đằng, Hải Châu, Đà Nẵng
+                      {data.address}
                     </Paragraph>
                   </Flex>
-                  <Flex style={{ alignItems: "left" }}>
-                    <PhoneOutlined />
-                    <Paragraph
+                </div>
+                {data?.latitude && data?.longitude ? (
+                  <MapComponent data={data} />
+                ) : (
+                  ""
+                )}
+              </Space>
+            </Content>
+          </div>
+          <div className="md:w-[30%] w-[100%] mx-auto mb-5 md:mb-0">
+            <Sider width="100%">
+              <button className="btn-shadow relative w-full text-xl font-apple font-semibold text-black pr-2 px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group">
+                {t("DP-button-booking")} <ShoppingCartOutlined />
+              </button>
+              <Space direction="vertical" size="large">
+                <Card bordered={false}>
+                  <Space direction="vertical">
+                    <Title
+                      level={3}
                       style={{
-                        marginLeft: "10px",
-                        marginBottom: "0",
                         color: "#171C32",
-                        fontSize: "15px",
+                        textAlign: "center",
+                        width: "100%",
+                        fontWeight: "bold",
                       }}
                     >
-                      +840347897633
-                    </Paragraph>
-                  </Flex>
-                  <Flex style={{ alignItems: "left" }}>
-                    <CalendarOutlined />
-                    <Paragraph
+                      {t("DP-price")}
+                    </Title>
+                    <Flex
                       style={{
-                        marginLeft: "10px",
-                        marginBottom: "0",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Flex
+                        gap="middle"
+                        vertical
+                        style={{
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <p className="text-[#171C32] font-apple text-xl">
+                          {t("DP-day")}
+                        </p>
+                        <span className="text-[#171C32] font-apple md:text-[4vh] text-[6vh]  font-semibold">
+                          {data?.price}
+                          <span className="text-[#171C32] font-apple text-[10px]">
+                            VND
+                          </span>
+                        </span>
+                      </Flex>
+                      <Divider
+                        type="vertical"
+                        style={{ height: "40px", color: "black" }}
+                      />
+                      <Flex
+                        gap="middle"
+                        vertical
+                        style={{
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
+                        <p className="text-[#171C32] font-apple text-xl">
+                          {" "}
+                          {t("DP-month")}
+                        </p>
+                        <span className="text-[#171C32] font-apple md:text-[4vh] text-[6vh] font-semibold">
+                          {data?.price * 30}
+                          <span className="text-[#171C32] font-apple text-[10px]">
+                            VND
+                          </span>
+                        </span>
+                      </Flex>
+                    </Flex>
+                  </Space>
+                </Card>
+                <Card width="100%" bordered={false}>
+                  <Space direction="vertical">
+                    <Title
+                      style={{
                         color: "#171C32",
-                        fontSize: "15px",
+                        textAlign: "center",
+                        width: "100%",
+                        fontWeight: "bold",
                       }}
                     >
-                      Joined 15th Dec 2023
-                    </Paragraph>
-                  </Flex>
-                  <Flex style={{ alignItems: "left" }}>
-                    <LinkOutlined />
-                    <Link
-                      style={{
-                        marginLeft: "10px",
-                        marginBottom: "0",
-                        fontSize: "15px",
-                      }}
-                    >
-                      https://stunited.vn/
-                    </Link>
-                  </Flex>
-                  <Divider />
-                  <p className="text-[##0b0014] font-apple text-[15px] mb-2 ">
-                    {t("DP-opening")}
-                  </p>
-                  <p className="text-[##0b0014] font-apple text-[15px] ">
-                    {t("DP-opening2")}
-                  </p>
-                  <p className="text-[##0b0014] font-apple text-[15px] ">
-                    {t("DP-opening3")}
-                  </p>
-                </Space>
-              </Card>
-            </Space>
-          </Sider>
+                      100
+                    </Title>
+                    <p className="text-[##0b0014] font-apple text-[15px] text-center">
+                      CoNEXTers meetup at {data?.name}
+                    </p>
+                  </Space>
+                </Card>
+                <Card bordered={false}>
+                  <Space direction="vertical">
+                    <Title level={4}>{t("DP-contact")}</Title>
+                    <Flex style={{ alignItems: "left" }}>
+                      <EnvironmentOutlined />
+                      <Paragraph
+                        style={{
+                          marginLeft: "10px",
+                          marginBottom: "0",
+                          color: "#171C32",
+                          fontSize: "15px",
+                        }}
+                      >
+                        {data?.address}
+                      </Paragraph>
+                    </Flex>
+                    <Flex style={{ alignItems: "left" }}>
+                      <PhoneOutlined />
+                      <Paragraph
+                        style={{
+                          marginLeft: "10px",
+                          marginBottom: "0",
+                          color: "#171C32",
+                          fontSize: "15px",
+                        }}
+                      >
+                        +840347897633
+                      </Paragraph>
+                    </Flex>
+                    <Flex style={{ alignItems: "left" }}>
+                      <CalendarOutlined />
+                      <Paragraph
+                        style={{
+                          marginLeft: "10px",
+                          marginBottom: "0",
+                          color: "#171C32",
+                          fontSize: "15px",
+                        }}
+                      >
+                        Joined 15th Dec 2023
+                      </Paragraph>
+                    </Flex>
+                    <Flex style={{ alignItems: "left" }}>
+                      <LinkOutlined />
+                      <Link
+                        style={{
+                          marginLeft: "10px",
+                          marginBottom: "0",
+                          fontSize: "15px",
+                        }}
+                      >
+                        {data?.url}
+                      </Link>
+                    </Flex>
+                    <Divider />
+                    <p className="text-[##0b0014] font-apple text-[15px] mb-2 ">
+                      {t("DP-opening")}
+                    </p>
+                    <p className="text-[##0b0014] font-apple text-[15px] ">
+                      {t("DP-opening2")}
+                    </p>
+                    <p className="text-[##0b0014] font-apple text-[15px] ">
+                      {t("DP-opening3")}
+                    </p>
+                  </Space>
+                </Card>
+              </Space>
+            </Sider>
+          </div>
         </Flex>
         <Divider />
         <div>

@@ -2,8 +2,10 @@
 
 import { Col, Row } from "antd";
 import "./Card.scss";
+import { useNavigate } from "react-router-dom";
 
 const CardComponent = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <Row className="mb-5 mt-5 flex">
       <Col
@@ -33,7 +35,10 @@ const CardComponent = ({ data }) => {
             <button className="relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group">
               BOOK A SEAT
             </button>
-            <a className="text-[#1890ff] hover:text-[#b6deff]" href="/about">
+            <a
+              className="text-[#1890ff] hover:text-[#b6deff]"
+              onClick={() => navigate(`/detail/${data.name}`)}
+            >
               See more
             </a>
           </div>

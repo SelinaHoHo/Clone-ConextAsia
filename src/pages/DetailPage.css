@@ -7,6 +7,9 @@
   border-radius: 1% !important;
   box-shadow: 0 2px 8px #00000026 !important;
 }
+.ant-col-lg-offset-2 {
+  margin-left: 0 !important;
+}
 
 .ant-space {
   margin: auto;
