@@ -10,10 +10,14 @@ import LogoNav from "../../assets/Img/LogoNav.png";
 import Ava from "../../assets/Img/default_avatar.png";
 import LanguageSwitcher from "../LanguageSwitcher";
 import Sidebar from "../Sidebar/Sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/auth/authSlice";
+import { LogoutOutlined } from "@ant-design/icons";
 
 const Header = ({ onSearchTermChange }) => {
+  const dispatch = useDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { isLogin } = useSelector((state) => state.auth);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -127,12 +131,24 @@ const Header = ({ onSearchTermChange }) => {
               <BellOutlined style={{ fontSize: "1.4rem" }} />
             </Dropdown>
           </div>
-          <div className="flex gap-3 items-center ">
-            <img src={Ava} alt="avatar" className="w-9" />
-            <p className="truncate hidden sm:block">
-              {truncateName(name, maxLength)}
-            </p>
-          </div>
+          {isLogin ? (
+            <div className="flex gap-3 items-center ">
+              <img src={Ava} alt="avatar" className="w-9" />
+              <p className="truncate hidden sm:block">
+                {truncateName(name, maxLength)}
+              </p>
+              <button
+                className=""
+                onClick={() => {
+                  dispatch(logout());
+                }}
+              >
+                <LogoutOutlined />
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </Col>
 
         <Col xs={1} sm={1} md={1} lg={0} xl={0}>

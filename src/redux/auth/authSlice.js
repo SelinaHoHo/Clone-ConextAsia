@@ -3,7 +3,7 @@ import { getData, getDetails } from "./authThunk";
 
 const initialState = {
   userSignedIn: "",
-  islogin: false,
+  isLogin: false,
   loading: false,
   error: [],
   data: [],
@@ -16,7 +16,10 @@ const authSlice = createSlice({
   reducers: {
     logout: (state, action) => {
       state.userSignedIn = "";
-      state.islogin = false;
+      state.isLogin = false;
+    },
+    login: (state, action) => {
+      state.isLogin = true;
     },
   },
   extraReducers: (builder) => {
@@ -46,5 +49,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, login } = authSlice.actions;
 export default authSlice.reducer;

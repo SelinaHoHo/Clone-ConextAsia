@@ -7,12 +7,14 @@ import SignUp from "./Authen/SignUp";
 import SignIn from "./Authen/SignIn";
 import BookingFormBtn from "./BookingFormBtn";
 import WorkplaceModal from "./WorkplaceModal";
+import { useSelector } from "react-redux";
 
 const CardComponent = ({ data }) => {
   const [signInVisible, setSignInVisible] = useState(false);
   const [signUpVisible, setSignUpVisible] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [isLogin] = localStorage.getItem("isLogin");
+  // const [isLogin] = localStorage.getItem("isLogin");
+  const { isLogin } = useSelector((state) => state.auth);
   console.log(isLogin);
   const navigate = useNavigate();
   const [selectedWorkplace, setSelectedWorkplace] = useState(false);
@@ -52,7 +54,7 @@ const CardComponent = ({ data }) => {
               <p className="mb-[15px] text-base">{data.price} vnd/day</p>
             </div>
             <div className="flex justify-between items-center">
-              {isLogin === "t" ? (
+              {isLogin === true ? (
                 <BookingFormBtn onClick={openModal} workplace={data} />
               ) : (
                 <button

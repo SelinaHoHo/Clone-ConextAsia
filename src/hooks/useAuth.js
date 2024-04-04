@@ -1,14 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
 import { postLogin, postRegister } from "../api/auth";
 import { notification } from "antd";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/auth/authSlice";
 
 export const useLogin = () => {
+  const dispatch = useDispatch();
   return useMutation({
     mutationFn: async (req) => {
       const { data } = await postLogin(req);
       return data;
     },
     onSuccess: (data) => {
+      dispatch(login());
       window.localStorage.setItem("isLogin", true);
       notification.success({
         message: "Login Successful",
