@@ -40,7 +40,7 @@ export default function Listing() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {markers?.map((item) => (
-              <Marker position={item?.geocode}>
+              <Marker key={item?.geocode} position={item?.geocode}>
                 <Popup>
                   <div className="flex flex-row gap-4">
                     <div className="w-32 h-24 overflow-hidden mb-0">
