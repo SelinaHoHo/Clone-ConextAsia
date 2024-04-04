@@ -20,7 +20,7 @@ const HomePage = () => {
   const fetchLocations = async (param1, param2) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/search/locations?name=${param1}&workplace?name=${param2}`
+        `http://localhost:3001/search/locations?name=${param1}&workplace_name=${param2}`
       );
       const data = await response.json();
       setLocations(data);
