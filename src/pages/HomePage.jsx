@@ -1,19 +1,18 @@
-import { CalendarOutlined, UsergroupAddOutlined } from "@ant-design/icons";
-import Search from "antd/es/input/Search";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import CardComponent from "../components/CardComponent";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
-import Listing from "./listing";
-import { useDispatch } from "react-redux";
-import "./home.css";
+import { CalendarOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import Search from 'antd/es/input/Search';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import CardComponent from '../components/CardComponent';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import './home.css';
+import Listing from './listing';
 
 const HomePage = () => {
   const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
-  const [inputSearch, setInputSearch] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [inputSearch, setInputSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -39,41 +38,41 @@ const HomePage = () => {
   return (
     <div>
       <Header onSearchTermChange={handleSearchTermChange} />
-      <div className=" md:flex justify-between my-4 block">
-        <div className="md:flex items-center block">
-          <h1 className="text-[28px] font-medium mb-[14px] lg:mb-0">
-            {t("Workplaces")}
+      <div className=' md:flex justify-between my-4 block'>
+        <div className='md:flex items-center block'>
+          <h1 className='text-[28px] font-medium mb-[14px] lg:mb-0'>
+            {t('Workplaces')}
           </h1>
           <Search
-            className="md:pl-[112px] pl-0 w-[234px] md:w-full"
-            placeholder="Search space"
+            className='md:pl-[112px] pl-0 w-[234px] md:w-full'
+            placeholder='Search space'
             value={inputSearch}
             onChange={(e) => {
               setInputSearch(e.target.value);
             }}
           />
         </div>
-        <div className="flex gap-4 items-center text-[15px] mt-[15px] md:mt-0 xs:hidden sm:flex">
+        <div className='flex gap-4 items-center text-[15px] mt-[15px] md:mt-0 xs:hidden sm:flex'>
           <a
-            className="border-2 px-[10px] py-[5px] hover:bg-[#d0d0d0]"
-            href="#"
+            className='border-2 px-[10px] py-[5px] hover:bg-[#d0d0d0]'
+            href='#'
           >
-            <CalendarOutlined className="pr-[4px]" />
+            <CalendarOutlined className='pr-[4px]' />
             Month View
           </a>
-          <a className="border-2 px-[10px] py-[5px] flex bg-[#d0d0d0]" href="#">
+          <a className='border-2 px-[10px] py-[5px] flex bg-[#d0d0d0]' href='#'>
             <img
-              className="pr-[4px]"
-              src="https://conext.asia/assets/Mothlybudget-a217f820.svg"
-              alt=""
+              className='pr-[4px]'
+              src='https://conext.asia/assets/Mothlybudget-a217f820.svg'
+              alt=''
             />
             Lowest Price
           </a>
           <a
-            className="border-2 px-[10px] py-[5px] hover:bg-[#d0d0d0]"
-            href="#"
+            className='border-2 px-[10px] py-[5px] hover:bg-[#d0d0d0]'
+            href='#'
           >
-            <UsergroupAddOutlined className="pr-[4px]" />
+            <UsergroupAddOutlined className='pr-[4px]' />
             Most Meet Up
           </a>
         </div>

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Col, Row } from "antd";
-import "./Card.scss";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import SignUp from "./Authen/SignUp";
-import SignIn from "./Authen/SignIn";
+import { Col, Row } from 'antd';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SignIn from './Authen/SignIn';
+import SignUp from './Authen/SignUp';
+import './Card.scss';
 
 const CardComponent = ({ data }) => {
   const [signInVisible, setSignInVisible] = useState(false);
@@ -13,37 +13,37 @@ const CardComponent = ({ data }) => {
   const navigate = useNavigate();
 
   return (
-    <Row className="mb-5 mt-5 flex">
+    <Row className='mb-5 mt-5 flex'>
       <Col
         span={12}
-        className="sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg px-5 "
+        className='sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg px-5 '
       >
-        <div className="w-full overflow-hidden">
+        <div className='w-full overflow-hidden'>
           <img
-            className="block h-full w-full transition-transform duration-500 transform hover:scale-110 rounded-md "
+            className='block h-full w-full transition-transform duration-500 transform hover:scale-110 rounded-md '
             src={
               data?.url ||
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKKVwj0K0pO7tkJERpFvOpCcb9kLjYzynm9SoZlvn6Q&s"
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpKKVwj0K0pO7tkJERpFvOpCcb9kLjYzynm9SoZlvn6Q&s'
             }
-            alt="card-image"
+            alt='card-image'
           />
         </div>
-        <div className="py-[20px] w-full">
+        <div className='py-[20px] w-full'>
           <div>
-            <h3 className="text-[20px] font-semibold ">{data?.name}</h3>
-            <p className="mb-4 text-base">{data.address}</p>
-            <p className="text-red-600 line-through text-base">
+            <h3 className='text-[20px] font-semibold '>{data?.name}</h3>
+            <p className='mb-4 text-base'>{data.address}</p>
+            <p className='text-red-600 line-through text-base'>
               70,000 vnd/day
             </p>
-            <p className="mb-[15px] text-base">{data.price} vnd/day</p>
+            <p className='mb-[15px] text-base'>{data.price} vnd/day</p>
           </div>
-          <div className="flex justify-between items-center">
+          <div className='flex justify-between items-center'>
             <button
               onClick={() => {
                 setVisible(true);
                 setSignInVisible(true);
               }}
-              className="relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group"
+              className='relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group'
             >
               BOOK A SEAT
             </button>
@@ -63,7 +63,7 @@ const CardComponent = ({ data }) => {
               />
             )}
             <a
-              className="text-[#1890ff] hover:text-[#b6deff]"
+              className='text-[#1890ff] hover:text-[#b6deff]'
               onClick={() => navigate(`/detail/${data.name}`)}
             >
               See more
