@@ -20,7 +20,7 @@ const WorkPlace = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Locations")
+      .get("http://localhost:3001/Locations")
       .then((response) => {
         setLocations(response.data);
       })
