@@ -1,0 +1,39 @@
+.ant-space {
+  width: 100% !important;
+}
+
+.ant-card .ant-card-body {
+  padding: 30px 20px !important;
+  border-radius: 1% !important;
+  box-shadow: 0 2px 8px #00000026 !important;
+}
+.ant-col-lg-offset-2 {
+  margin-left: 0 !important;
+}
+
+.ant-space {
+  margin: auto;
+}
+
+.btn-shadow::before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: "";
+  top: 110%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.35) 0,
+    transparent 80%
+  );
+  transition-duration: 0.3s;
+  transition-property: transform, opacity;
+}
+
+.btn-shadow:hover::before {
+  opacity: 1;
+}

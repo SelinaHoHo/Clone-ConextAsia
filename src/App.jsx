@@ -1,14 +1,14 @@
-import { useRoutes } from 'react-router-dom';
-import './App.css';
-import DetailPage from './pages/DetailPage';
-import HomePage from './pages/HomePage';
-import Not from './pages/NotFoundPage';
+import { useRoutes } from "react-router-dom";
+import "./App.css";
+import DetailPage from "./pages/DetailPage";
+import HomePage from "./pages/HomePage";
+import Not from "./pages/NotFoundPage";
 
 function App() {
   let Router = useRoutes([
-    { path: '/', element: <HomePage /> },
-    { path: '/about', element: <DetailPage /> },
-    { path: '*', element: <Not /> },
+    { path: "/", element: <HomePage /> },
+    { path: "/detail/:name", element: <DetailPage /> },
+    { path: "*", element: <Not /> },
   ]);
 
   return Router;
