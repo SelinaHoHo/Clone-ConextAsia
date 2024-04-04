@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import CardComponent from '../components/CardComponent';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
+import Listing from './listing';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -76,8 +77,17 @@ const HomePage = () => {
       </div>
       {locations &&
         locations[0]?.Workplaces?.map((item) => (
+          <>
+          <div>
+            <div>
           <CardComponent key={item.id} data={item} />
+           </div>
+           <div>
+           </div>
+          </div>
+          </>
         ))}
+        <Listing/>
       <Footer />
     </div>
   );
