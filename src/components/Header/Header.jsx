@@ -58,6 +58,14 @@ const Header = ({ onSearchTermChange }) => {
     </Menu>
   );
 
+  const user = (
+    <Menu className="w-[150px]">
+      <Menu.Item key="1" className="text-center text-red-500">
+        <p className="text-red-500">Log Out</p>{" "}
+      </Menu.Item>
+    </Menu>
+  );
+
   const name = "show ten nguoi dung";
   const maxLength = 10;
   return (
@@ -127,12 +135,15 @@ const Header = ({ onSearchTermChange }) => {
               <BellOutlined style={{ fontSize: "1.4rem" }} />
             </Dropdown>
           </div>
-          <div className="flex gap-3 items-center ">
-            <img src={Ava} alt="avatar" className="w-9" />
-            <p className="truncate hidden sm:block">
-              {truncateName(name, maxLength)}
-            </p>
-          </div>
+
+          <Dropdown overlay={user} placement="bottom" arrow>
+            <div className="flex gap-3 items-center ">
+              <img src={Ava} alt="avatar" className="w-9" />
+              <p className="truncate hidden sm:block">
+                {truncateName(name, maxLength)}
+              </p>
+            </div>
+          </Dropdown>
         </Col>
 
         <Col xs={1} sm={1} md={1} lg={0} xl={0}>
