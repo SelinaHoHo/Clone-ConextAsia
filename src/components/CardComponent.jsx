@@ -1,23 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Col, Row } from 'antd';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import SignIn from './Authen/SignIn';
-import SignUp from './Authen/SignUp';
+
 import './Card.scss';
 
 const CardComponent = ({ data }) => {
-  const [signInVisible, setSignInVisible] = useState(false);
-  const [signUpVisible, setSignUpVisible] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const navigate = useNavigate();
-
   return (
-    <Row className='mb-5 mt-5 flex'>
-      <Col
-        span={12}
-        className='sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg px-5 '
-      >
+    <div className='mb-5 mt-5 flex '>
+      <div className='sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg  w-full '>
         <div className='w-full overflow-hidden'>
           <img
             className='block h-full w-full transition-transform duration-500 transform hover:scale-110 rounded-md '
@@ -28,7 +16,7 @@ const CardComponent = ({ data }) => {
             alt='card-image'
           />
         </div>
-        <div className='py-[20px] w-full'>
+        <div className='py-[20px] w-full pr-[20px]'>
           <div>
             <h3 className='text-[20px] font-semibold '>{data?.name}</h3>
             <p className='mb-4 text-base'>{data.address}</p>
@@ -38,40 +26,16 @@ const CardComponent = ({ data }) => {
             <p className='mb-[15px] text-base'>{data.price} vnd/day</p>
           </div>
           <div className='flex justify-between items-center'>
-            <button
-              onClick={() => {
-                setVisible(true);
-                setSignInVisible(true);
-              }}
-              className='relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group'
-            >
+            <button className='relative btn-shadow font-medium text-sm text-black px-[8px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group'>
               BOOK A SEAT
             </button>
-            {visible ? (
-              <SignIn
-                visible={signInVisible}
-                onClose={() => setSignInVisible(false)}
-                onSignUp={() => setSignUpVisible(true)}
-                setVisible={setVisible}
-              />
-            ) : (
-              <SignUp
-                visible={signUpVisible}
-                onClose={() => setSignUpVisible(false)}
-                onSignIn={() => setSignInVisible(true)}
-                setVisible={setVisible}
-              />
-            )}
-            <a
-              className='text-[#1890ff] hover:text-[#b6deff]'
-              onClick={() => navigate(`/detail/${data.name}`)}
-            >
+            <a className='text-[#1890ff] hover:text-[#b6deff]' href='#'>
               See more
             </a>
           </div>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 
