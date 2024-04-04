@@ -20,7 +20,7 @@ const WorkPlace = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/Locations")
+      .get("http://localhost:3001/Locations")
       .then((response) => {
         setLocations(response.data);
       })
@@ -41,8 +41,6 @@ const WorkPlace = () => {
                 <p>Address: {workplace.address}</p>
                 <p>Price: {workplace.price}</p>
                 <BookingFormBtn onClick={openModal} workplace={workplace} />
-                View Details
-                {/* Add more fields as needed */}
               </div>
             ))}
           </div>

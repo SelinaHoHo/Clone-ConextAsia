@@ -2,8 +2,6 @@ import { CalendarOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 import Search from "antd/es/input/Search";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Modal from "react-modal";
-import BookingForm from "../components/BookingForm";
 import CardComponent from "../components/CardComponent";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
@@ -36,14 +34,6 @@ const HomePage = () => {
   };
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   return (
     <div>
@@ -88,24 +78,13 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div>
-        <button onClick={openModal}>Open Booking Form</button>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Booking Form Modal"
-        >
-          <h2>Booking Form</h2>
-          <BookingForm />
-          <button onClick={closeModal}>Close</button>
-        </Modal>
-        <WorkPlace />
-      </div>
+      <WorkPlace />
 
       {locations &&
         locations[0]?.Workplaces?.map((item) => (
           <CardComponent key={item.id} data={item} />
         ))}
+
       <Footer />
     </div>
   );
