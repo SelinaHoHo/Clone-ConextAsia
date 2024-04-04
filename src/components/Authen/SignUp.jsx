@@ -8,11 +8,14 @@ const SignUp = ({ visible, onClose, onSignIn, setVisible }) => {
   const { t } = useTranslation();
   const { mutate: handleRegister } = useRegister();
   const onFinish = (value) => {
-    handleRegister({
-      name: value.username,
-      email: value.email,
-      password: value.password,
-    });
+    Promise.all([
+      handleRegister({
+        name: value.username,
+        email: value.email,
+        password: value.password,
+      }),
+    ]);
+    onClose();
   };
   const handleSignIn = () => {
     onClose(); // Close sign-up modal

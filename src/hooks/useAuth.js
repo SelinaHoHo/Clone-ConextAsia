@@ -31,13 +31,14 @@ export const useLogin = () => {
 };
 
 export const useRegister = () => {
+  const dispatch = useDispatch();
   return useMutation({
     mutationFn: async (req) => {
       const { data } = await postRegister(req);
       return data;
     },
     onSuccess: (data) => {
-      console.log(data);
+      dispatch(login());
       notification.success({
         message: "Register Successful",
         description: "You have successfully registered.",
