@@ -12,7 +12,6 @@ import Sidebar from "../Sidebar/Sidebar";
 import { useState } from "react";
 
 const Header = () => {
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -21,7 +20,6 @@ const Header = () => {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-
 
   const data = ["Opp!There is no new update ... "];
   const truncateName = (name, maxLength) => {
@@ -47,6 +45,14 @@ const Header = () => {
           </List.Item>
         )}
       />
+    </Menu>
+  );
+
+  const user = (
+    <Menu className="w-[150px]">
+      <Menu.Item key="1" className="text-center text-red-500">
+        <p className="text-red-500">Log Out</p>{" "}
+      </Menu.Item>
     </Menu>
   );
 
@@ -116,18 +122,21 @@ const Header = () => {
               <BellOutlined style={{ fontSize: "1.4rem" }} />
             </Dropdown>
           </div>
-          <div className="flex gap-3 items-center ">
-            <img src={Ava} alt="avatar" className="w-9" />
-            <p className="truncate hidden sm:block">
-              {truncateName(name, maxLength)}
-            </p>
-          </div>
+
+          <Dropdown overlay={user} placement="bottom" arrow>
+            <div className="flex gap-3 items-center ">
+              <img src={Ava} alt="avatar" className="w-9" />
+              <p className="truncate hidden sm:block">
+                {truncateName(name, maxLength)}
+              </p>
+            </div>
+          </Dropdown>
         </Col>
 
         <Col xs={1} sm={1} md={1} lg={0} xl={0}>
           <div>
             <MenuOutlined className="text-2xl , ml-6" onClick={toggleSidebar} />
-            <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar}/>
+            <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
           </div>
         </Col>
       </Row>
