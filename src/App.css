@@ -7,9 +7,9 @@ body {
     .ant-select-customize-input
   )
   .ant-select-selector {
-  border: 1px solid #d9d9d9;
+  /* border: 1px solid #d9d9d9;
   background: #171c32;
-  color: white;
+  color: white; */
 }
 :where(.css-dev-only-do-not-override-11xg00t).ant-select .ant-select-arrow {
   color: white;
