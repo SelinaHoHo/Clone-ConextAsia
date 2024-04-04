@@ -115,13 +115,6 @@ const BookingForm = ({ selectedWorkplace }) => {
     divRef.current.textContent = e.target.textContent;
   };
 
-  const startDate = selectedDate ? moment(selectedDate) : moment();
-  const endDate = selectedDateOut
-    ? moment(selectedDateOut)
-    : moment().add(1, "days");
-
-  const dateRange = endDate.diff(startDate, "days") + 1;
-
   function formatVND(amount) {
     return amount.toLocaleString("vi-VN");
   }
@@ -136,22 +129,12 @@ const BookingForm = ({ selectedWorkplace }) => {
     setSuccess(false);
   };
 
-  const divRef = useRef(null);
-
-  const handleInput = (e) => {
-    divRef.current.textContent = e.target.textContent;
-  };
-
   const startDate = selectedDate ? moment(selectedDate) : moment();
   const endDate = selectedDateOut
     ? moment(selectedDateOut)
     : moment().add(1, "days");
 
   const dateRange = endDate.diff(startDate, "days") + 1;
-
-  function formatVND(amount) {
-    return amount.toLocaleString("vi-VN");
-  }
 
   return (
     <div className="overflow-auto">
