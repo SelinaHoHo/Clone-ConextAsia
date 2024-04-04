@@ -30,11 +30,8 @@ const CardComponent = ({ data }) => {
 
   return (
     <>
-      <Row className="mb-5 mt-5 flex">
-        <Col
-          span={12}
-          className="sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg px-5 "
-        >
+      <div className="mb-5 mt-5 flex">
+        <div className="sm:flex min-w-full md:min-w-0 block gap-8 rounded-md shadow-lg px-5 ">
           <div className="w-full overflow-hidden">
             <img
               className="block h-full w-full transition-transform duration-500 transform hover:scale-110 rounded-md "
@@ -91,8 +88,8 @@ const CardComponent = ({ data }) => {
               </a>
             </div>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
       <WorkplaceModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

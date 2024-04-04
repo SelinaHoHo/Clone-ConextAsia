@@ -2,10 +2,10 @@
   "hello": "Xin chao!",
   "welcome": "Chao mung den voi app cua toi!",
   "Event": "sự kiện",
-  "hot": "nhu cầm nóng bỏng",
+  "hot": "Nhu cầm hấp dẫn",
   "Workplaces": "Nơi Làm Việc",
-  "t.a.p": "điều khoản và chính sách",
-  "voucher": "ưu đãi",
+  "t.a.p": "Điều khoản và chính sách",
+  "voucher": "Ưu đãi",
   "ab": "về chúng tôi",
   "con": "liên hệ",
   "faq": "câu hỏi thường gặp",
@@ -40,5 +40,8 @@
   "button-singUp": "ĐĂNG KÝ",
   "button-singIn": "ĐĂNG NHẬP",
   "agree-text": "Tôi đồng ý với",
-  "agree-policy": "Điều khoản Dịch vụ và Chính sách Bảo mật"
+  "agree-policy": "Điều khoản Dịch vụ và Chính sách Bảo mật",
+  "MonthView": "Theo Tháng",
+  "LowestPrice": "Giá Thấp",
+  "MostMeetUp": "Gặp nhiều"
 }

@@ -40,5 +40,8 @@
   "button-singUp": "SIGN UP",
   "button-singIn": "SIGN IN",
   "agree-text": "I agree to the",
-  "agree-policy": "Term of Service and Privacy Policy"
+  "agree-policy": "Term of Service and Privacy Policy",
+  "MonthView": "Month View",
+  "LowestPrice": "Lowest Price",
+  "MostMeetUp": "Most Meet Up"
 }
