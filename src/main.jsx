@@ -12,10 +12,10 @@ const queryClient = new QueryClient();
 
 ReactDOM.render(
   <BrowserRouter>
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </QueryClientProvider>
   </BrowserRouter>,
 

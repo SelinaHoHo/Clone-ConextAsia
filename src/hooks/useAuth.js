@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { postLogin } from "../api/auth";
+import { postLogin, postRegister } from "../api/auth";
 import { notification } from "antd";
 
 export const useLogin = () => {
@@ -19,6 +19,30 @@ export const useLogin = () => {
       notification.error({
         // Show error notification
         message: "Login Failed",
+        description:
+          error.response.data.message || "An error occurred during login.",
+      });
+    },
+  });
+};
+
+export const useRegister = () => {
+  return useMutation({
+    mutationFn: async (req) => {
+      const { data } = await postRegister(req);
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      notification.success({
+        message: "Register Successful",
+        description: "You have successfully registered.",
+      });
+    },
+    onError: (error) => {
+      notification.error({
+        // Show error notification
+        message: "Register Failed",
         description:
           error.response.data.message || "An error occurred during login.",
       });

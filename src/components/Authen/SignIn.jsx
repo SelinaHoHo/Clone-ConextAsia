@@ -3,16 +3,15 @@ import { Button, Form, Input, Modal } from "antd";
 import { useTranslation } from "react-i18next";
 import { useLogin } from "../../hooks/useAuth";
 
-
 const SignIn = ({ visible, onClose, onSignUp, setVisible }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
-  const {mutate: handleLogin} = useLogin();
+  const { mutate: handleLogin } = useLogin();
   const onFinish = (value) => {
     handleLogin({
       email: value.email,
       password: value.password,
-    })
+    });
   };
 
   const handleSignUp = () => {

@@ -1,22 +1,18 @@
-import React from "react";
 import { Form, Input, Modal, Button, Checkbox } from "antd";
 import { GoogleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { register } from "../../redux/auth/authThunk";
+import { useRegister } from "../../hooks/useAuth";
 
 const SignUp = ({ visible, onClose, onSignIn, setVisible }) => {
   const [form] = Form.useForm();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { mutate: handleRegister } = useRegister();
   const onFinish = (value) => {
-    dispatch(
-      register({
-        name: value.username,
-        email: value.email,
-        password: value.password,
-      })
-    );
+    handleRegister({
+      name: value.username,
+      email: value.email,
+      password: value.password,
+    });
   };
   const handleSignIn = () => {
     onClose(); // Close sign-up modal

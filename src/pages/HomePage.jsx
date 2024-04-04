@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import "./home.css";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
