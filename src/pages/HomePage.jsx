@@ -6,12 +6,15 @@ import CardComponent from "../components/CardComponent";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Listing from "./listing";
+import { useDispatch } from "react-redux";
+import "./home.css";
 
 const HomePage = () => {
   const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     fetchLocations(searchTerm, inputSearch);
