@@ -9,7 +9,7 @@ export const useLogin = () => {
       return data;
     },
     onSuccess: (data) => {
-      console.log(data);
+      window.localStorage.setItem("isLogin", true);
       notification.success({
         message: "Login Successful",
         description: "You have successfully logged in.",

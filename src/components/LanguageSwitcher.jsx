@@ -19,7 +19,7 @@ const LanguageSwitcher = () => {
     <div>
       <Select
         size="large"
-        suffixIcon={<GlobalOutlined style={{ color: "White" }} />}
+        suffixIcon={<GlobalOutlined style={{ color: "black" }} />}
         labelInValue
         defaultValue={{
           value: "En",

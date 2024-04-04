@@ -5,7 +5,7 @@ const BookingFormBtn = ({ onClick, workplace }) => {
     <div>
       <button
         onClick={() => onClick(workplace)}
-        className="p-4 bg-[#fed702] font-semibold uppercase color-[#171c32] rounded  transform hover:-translate-y-1 transition duration-300 hover:shadow-bottom"
+        className="relative btn-shadow font-medium text-black px-[18px] py-[12px] bg-[#fed702] rounded transition-transform duration-300 hover:translate-y-[-5px] group uppercase"
       >
         Book A SEAT
       </button>

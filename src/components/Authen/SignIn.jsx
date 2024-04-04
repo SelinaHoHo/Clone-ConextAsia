@@ -8,10 +8,13 @@ const SignIn = ({ visible, onClose, onSignUp, setVisible }) => {
   const { t } = useTranslation();
   const { mutate: handleLogin } = useLogin();
   const onFinish = (value) => {
-    handleLogin({
-      email: value.email,
-      password: value.password,
-    });
+    Promise.all([
+      handleLogin({
+        email: value.email,
+        password: value.password,
+      }),
+      setVisible(false),
+    ]);
   };
 
   const handleSignUp = () => {

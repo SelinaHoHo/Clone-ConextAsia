@@ -79,8 +79,6 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* <Workplace /> */}
-
       {locations &&
         locations[0]?.Workplaces?.map((item) => (
           <>
