@@ -1,3 +1,4 @@
+import axios from "axios";
 import { DatePicker, Select } from "antd";
 import "antd/dist/antd";
 import { Col, Input, Row } from "antd/lib/index";
@@ -8,6 +9,21 @@ import MoMoLogo from "../assets/MoMo_Logo.png";
 import Cash from "../assets/cash-payment.png";
 
 const BookingForm = ({ selectedWorkplace }) => {
+  //Payment
+  const callPayment = async (number) => {
+    console.log(number);
+    try {
+      const response = await axios.post("http://localhost:3001/order", {
+        amountNumber: number,
+      });
+      const payUrl = response.data.payUrl;
+      console.log(payUrl);
+      window.location.href = payUrl; // Chuyển hướng sang payUrl
+    } catch (error) {
+      console.error("Error while calling payment:", error);
+    }
+  };
+
   const [selectedOption, setSelectedOption] = useState("daily");
 
   const [customerCount, setCustomerCount] = useState(1);
@@ -578,7 +594,20 @@ const BookingForm = ({ selectedWorkplace }) => {
                   >
                     back
                   </button>
-                  <button className="uppercase  border px-4 py-2 bg-[#fed702] font-semibold color-[#171c32] hover:-translate-y-1 transition duration-300">
+                  <button
+                    onClick={() =>
+                      callPayment(
+                        selectedOption === "daily"
+                          ? parseInt(customerCount) *
+                              parseInt(selectedWorkplace.price) *
+                              parseInt(dateRange)
+                          : parseInt(customerCount) *
+                              parseInt(selectedWorkplace.price) *
+                              parseInt(monthCount * 30)
+                      )
+                    }
+                    className="uppercase  border px-4 py-2 bg-[#fed702] font-semibold color-[#171c32] hover:-translate-y-1 transition duration-300"
+                  >
                     payment
                   </button>
                 </div>
@@ -693,6 +722,12 @@ const BookingForm = ({ selectedWorkplace }) => {
                           parseInt(selectedWorkplace.price) *
                           parseInt(dateRange)
                       )}{" "}
+                    {selectedOption === "monthly" &&
+                      formatVND(
+                        parseInt(customerCount) *
+                          parseInt(selectedWorkplace.price) *
+                          parseInt(monthCount * 30)
+                      )}
                     VND
                   </div>
                 </div>
